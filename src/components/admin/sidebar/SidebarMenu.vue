@@ -35,21 +35,25 @@ defineProps<{
       <ul
         class="text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 text-base"
       >
-        <SidebarLink href="#" active :icon="faGrip">Dashboard</SidebarLink>
+        <SidebarLink :to="{ name: 'home' }" :icon="faGrip">Dashboard</SidebarLink>
 
         <SidebarDropdown title="Pages" :icon="faFileLines">
-          <SidebarLink href="#" :topLinkIs="false">Blank</SidebarLink>
+          <SidebarLink to="/blank" :topLinkIs="false">Blank</SidebarLink>
 
           <SidebarDropdown title="Auth" :topLinkIs="false">
-            <SidebarLink href="#" :topLinkIs="false" :icon="faDotCircle">Register</SidebarLink>
-            <SidebarLink href="#" :topLinkIs="false" :icon="faDotCircle">Log In</SidebarLink>
+            <SidebarLink to="/auth/register" :topLinkIs="false" :icon="faDotCircle"
+              >Register</SidebarLink
+            >
+            <SidebarLink to="/auth/login" :topLinkIs="false" :icon="faDotCircle"
+              >Log In</SidebarLink
+            >
           </SidebarDropdown>
 
-          <SidebarLink href="#" :topLinkIs="false">404 Error</SidebarLink>
-          <SidebarLink href="#" :topLinkIs="false">500 Error</SidebarLink>
+          <SidebarLink to="/404" :topLinkIs="false">404 Error</SidebarLink>
+          <SidebarLink to="/500" :topLinkIs="false">500 Error</SidebarLink>
         </SidebarDropdown>
 
-        <SidebarLink href="#" :icon="faPenToSquare">
+        <SidebarLink to="/forms" :icon="faPenToSquare">
           Forms
           <span
             class="bg-red-600 dark:bg-red-800 text-white/80 dark:text-white/50 text-sm font-semibold px-2 py-0.5 rounded absolute right-2"
@@ -57,19 +61,19 @@ defineProps<{
           >
         </SidebarLink>
 
-        <SidebarLink href="#" :icon="faTableList">Tables</SidebarLink>
+        <SidebarLink to="/tables" :icon="faTableList">Tables</SidebarLink>
 
         <li class="mb-1">
           <span class="block my-1 text-sm p-2 pl-0 font-semibold uppercase">Components</span>
         </li>
 
-        <SidebarLink href="#" :icon="faTriangleExclamation">Alerts</SidebarLink>
+        <SidebarLink to="/alerts" :icon="faTriangleExclamation">Alerts</SidebarLink>
 
-        <SidebarLink href="#" :icon="faToggleOff">Buttons</SidebarLink>
+        <SidebarLink to="/buttons" :icon="faToggleOff">Buttons</SidebarLink>
 
-        <SidebarLink href="#" :icon="faBarsStaggered">Cards</SidebarLink>
+        <SidebarLink to="/cards" :icon="faBarsStaggered">Cards</SidebarLink>
 
-        <SidebarLink href="#" :icon="faCube">Modals</SidebarLink>
+        <SidebarLink to="/modals" :icon="faCube">Modals</SidebarLink>
       </ul>
     </aside>
   </div>

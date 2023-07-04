@@ -7,6 +7,8 @@ interface sidebarMenuTogglerType {
   mobileMenuOpenIs: Ref<boolean>
   sidebarMenuClose: basicFuncationType
   toggleSidebarMenu: basicFuncationType
+  mobileMenuClose: basicFuncationType
+  toggleMobileMenu: basicFuncationType
 }
 
 export default function useSidebarMenuToggler(): sidebarMenuTogglerType {
@@ -18,6 +20,14 @@ export default function useSidebarMenuToggler(): sidebarMenuTogglerType {
   }
   const toggleSidebarMenu: basicFuncationType = () => {
     sidebarMenuOpenIs.value = !sidebarMenuOpenIs.value
+  }
+
+  const mobileMenuClose: basicFuncationType = () => {
+    mobileMenuOpenIs.value = false
+  }
+
+  const toggleMobileMenu: basicFuncationType = () => {
+    mobileMenuOpenIs.value = !mobileMenuOpenIs.value
   }
 
   // change sidebarMenuOpenIs value when screen width will change
@@ -34,7 +44,6 @@ export default function useSidebarMenuToggler(): sidebarMenuTogglerType {
   const windowWidthLg: MediaQueryList = window.matchMedia('(min-width: 1024px)')
 
   onMounted(() => {
-    initFlowbite()
     windowWidthLg.addEventListener('change', matchMediaForSidebar)
     matchMediaForSidebar(windowWidthLg)
   })
@@ -43,5 +52,12 @@ export default function useSidebarMenuToggler(): sidebarMenuTogglerType {
     windowWidthLg.removeEventListener('change', matchMediaForSidebar)
   })
 
-  return { sidebarMenuOpenIs, mobileMenuOpenIs, sidebarMenuClose, toggleSidebarMenu }
+  return {
+    sidebarMenuOpenIs,
+    mobileMenuOpenIs,
+    sidebarMenuClose,
+    toggleSidebarMenu,
+    mobileMenuClose,
+    toggleMobileMenu
+  }
 }
