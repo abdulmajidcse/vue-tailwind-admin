@@ -20,7 +20,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import useDarkTheme from './composables/useDarkMode'
 import useSidebarMenuToggler from './composables/useSidebarMenuToggler'
-import SidebarMenu from './components/admin/SidebarMenu.vue'
+import SidebarMenu from './components/admin/sidebar/SidebarMenu.vue'
 
 const { darkThemeIs, updateTheme } = useDarkTheme()
 const { sidebarMenuOpenIs, mobileMenuOpenIs, sidebarMenuClose, toggleSidebarMenu } =
