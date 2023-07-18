@@ -1,5 +1,41 @@
 <script setup lang="ts">
 import { faAngleRight, faHome } from '@fortawesome/free-solid-svg-icons'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+} from 'chart.js/auto'
+import { Line, Doughnut } from 'vue-chartjs'
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+
+const doughnutChart = {
+  labels: ['Delivered', 'Canceled', 'New'],
+  datasets: [
+    {
+      label: 'Order Status',
+      data: [1040, 50, 370],
+      backgroundColor: ['rgb(133, 105, 241)', 'rgb(164, 101, 241)', 'rgb(101, 143, 241)'],
+      hoverOffset: 4
+    }
+  ]
+}
+
+const lineChart = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+  datasets: [
+    {
+      label: 'Sales Report',
+      backgroundColor: 'hsl(252, 82.9%, 67.8%)',
+      borderColor: 'hsl(252, 82.9%, 67.8%)',
+      data: [0, 10, 5, 2, 20, 30, 45]
+    }
+  ]
+}
 </script>
 
 <template>
@@ -122,7 +158,7 @@ import { faAngleRight, faHome } from '@fortawesome/free-solid-svg-icons'
         class="bg-white dark:bg-white/5 text-slate-800 dark:text-slate-100 shadow rounded-lg mr-0 lg:mr-3"
       >
         <div class="py-3 px-5 bg-gray-100 dark:bg-gray-400/10">Sales Report</div>
-        <canvas class="p-10" id="chartLine"></canvas>
+        <Line :data="lineChart" />
       </div>
     </div>
 
@@ -130,7 +166,7 @@ import { faAngleRight, faHome } from '@fortawesome/free-solid-svg-icons'
       class="bg-white dark:bg-white/5 text-slate-800 dark:text-slate-100 shadow rounded-lg overflow-hidden w-full lg:w-4/12"
     >
       <div class="py-3 px-5 bg-gray-100 dark:bg-gray-400/10">Order Report</div>
-      <canvas class="p-10" id="chartDoughnut"></canvas>
+      <Doughnut :data="doughnutChart" />
     </div>
   </section>
 
